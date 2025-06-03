@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { 
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 30px auto;
+  width: 94%;
+  max-width: 1600px;
+  background-color: #111;
+  font-family: "Open Sauce", arial, sans-serif;
+}
+
+.clamp-text {
+  font-size: clamp(1em, 22vw, 20rem);
+  font-weight: 500;
+  line-height: 0.8;
+  letter-spacing: -0.053em;
+  word-spacing: 0;
+  white-space: nowrap;
+  font-family: "Bebas Neue", sans-serif;
+  color: #777;
+}
+
+.clamp-small {
+  font-size: clamp(0.7rem, 1.1vw, 0.8rem);
+  font-weight: normal;
+  line-height: 1.15;
+  color: #777;
+  font-family: "Open Sauce", arial, sans-serif;
+}
+
+.clamp-span{
+  font-size: clamp(0.7em, 10vw, 5rem);
+  font-weight: normal;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: #777;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.clamp-move {
+  font-size: clamp(0.3rem, 8vw, 3rem);
+  font-weight: normal;
+  letter-spacing: -0.03em;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.clamp-head {
+  font-family: "Open Sauce", sans-serif;
+  color: #fff;
+  font-size: clamp(2em, 5vw, 7rem);
+  font-weight: 600;
+}
