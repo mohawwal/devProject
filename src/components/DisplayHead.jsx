@@ -65,7 +65,10 @@ const DisplayHead = ({ TextA, TextB, aboutText, id }) => {
   }, [scrollY, widthMotionValue])
 
   return (
-    <div id={id} className='w-full h-[90vh] pt-[12vh] overflow-hidden'>
+    <div
+      id={id}
+      className="w-full md:h-[90vh] h-auto pt-[12vh] pb-12 overflow-hidden"
+    >
       <div className="">
         <div className="hidden md:flex items-center gap-4">
           <h1 className="clamp-text">

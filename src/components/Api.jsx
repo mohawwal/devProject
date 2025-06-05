@@ -180,7 +180,7 @@ const Api = () => {
     <div className="min-h-screen my-10 text-[#aaa]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-4">
-          <p className="text-xs font-bebas">
+          <p className="text-xs">
             BACKEND X <br /> INTEGRATION (5)
           </p>
         </div>
@@ -194,7 +194,7 @@ const Api = () => {
                     className="flex items-center justify-between py-3 cursor-pointer hover:text-[#777] transition-colors"
                     onClick={() => toggleAccordion(index)}
                   >
-                    <p className="font-bebas text-xs sm:text-sm">{api.title}</p>
+                    <p className="text-sm font-semibold">{api.title}</p>
                     <button
                       className={`transform transition-transform duration-200 flex-shrink-0 ml-2 ${
                         openIndex === index ? "rotate-180" : ""
@@ -242,7 +242,7 @@ const Api = () => {
                 <h2 className="text-[#bbb] font-semibold mb-3 text-sm uppercase tracking-wide">
                   MUSIC & VIBES
                 </h2>
-                <div className="text-xs text-[#888] leading-relaxed space-y-2">
+                <div className="text-[13.5px] text-[#888] leading-relaxed space-y-2">
                   <p>
                     Won't like to be identified as an FC, but regardless, I fuck with Wizkid so bad. 
                     "Made in Lagos" is the ultimate coding soundtrack - pure vibes that keep the flow going.
@@ -292,7 +292,7 @@ const Api = () => {
                 <h2 className="text-[#bbb] font-semibold mb-3 text-sm uppercase tracking-wide">
                   ARSENAL FC
                 </h2>
-                <div className="text-xs text-[#888] leading-relaxed space-y-2">
+                <div className="text-[13.5px] text-[#888] leading-relaxed space-y-2">
                   <p>
                     As an Arsenal fan, I've mastered the art of debugging under pressure - 
                     because supporting Arsenal is basically error handling in real life.

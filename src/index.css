@@ -46,7 +46,7 @@ body {
 }
 
 .clamp-move {
-  font-size: clamp(0.3rem, 8vw, 3rem);
+  font-size: clamp(0.5rem, 8vw, 3rem);
   font-weight: normal;
   letter-spacing: -0.03em;
   font-family: "Bebas Neue", sans-serif;
@@ -55,6 +55,6 @@ body {
 .clamp-head {
   font-family: "Open Sauce", sans-serif;
   color: #fff;
-  font-size: clamp(2em, 5vw, 7rem);
+  font-size: clamp(1.6em, 7vw, 7rem);
   font-weight: 600;
 }
