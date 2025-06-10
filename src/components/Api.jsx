@@ -119,7 +119,7 @@ const Api = () => {
                     <div className="flex-1">
                       <p className="text-sm font-semibold">{project.project_name}</p>
                       <p className="text-xs text-[#666] mt-1">
-                        {project.stack.join(' • ')} | {project.company}
+                        {project.stack.join(' • ')} {project.company && `| ${project.company}`}
                       </p>
                     </div>
                     <button
@@ -192,7 +192,7 @@ const Api = () => {
 
                       <div className="mt-3 pt-3 border-t border-[#333]">
                         <div className="flex flex-wrap gap-2 text-xs">
-                          <span className="text-[#666]">Created:</span>
+                          <span className="text-[#666]">Uploaded:</span>
                           <span className="text-[#888]">
                             {new Date(project.created_at).toLocaleDateString('en-US', {
                               year: 'numeric',
@@ -200,8 +200,8 @@ const Api = () => {
                               day: 'numeric'
                             })}
                           </span>
-                          <span className="text-[#666] ml-4">By:</span>
-                          <span className="text-[#888]">{project.creator_email}</span>
+                          {/* <span className="text-[#666] ml-4">By:</span>
+                          <span className="text-[#888]">{project.creator_email}</span> */}
                         </div>
                       </div>
                     </div>
