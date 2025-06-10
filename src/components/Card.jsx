@@ -2,23 +2,20 @@ import React from 'react'
 
 const Card = () => {
   return (
-    <div className='my-10'>
+    <div className='my-8'>
       <div className='border-b-[0.5px] border-[#aaa] h-[50vh] flex gap-4 flex-col justify-center items-center px-4'>
         <p className='text-xs text-[#aaa] uppercase tracking-wide font-bold'>ORIGIN STORY</p>
-        <div className='max-w-3xl pt-3 pb-6 text-center font-normal text-[#777] text-sm leading-relaxed space-y-3'>
+        <div className='max-w-3xl pt-3 pb-6 text-start font-normal text-[#777] text-base leading-relaxed space-y-3'>
           <p>
-            I have always been building something, starting from a YouTube channel that flopped, pivoted to creating pixel art during
-            the NFT hype (until that bubble burst), and was even a solid footballer for a while, and a lot more things from my journey.
+            My journey into tech wasn’t linear. I explored different creative paths from content creation to digital art before finding clarity in code.
           </p>
           <p>
-            In my final semester, while juggling <span className='text-[#aaa]'>Agricultural and Biosystem Engineering</span> coursework, 
-            final project research, and exams, I discovered my true calling - <span className='hover:text-[#E34234] transition-colors cursor-pointer'>TECH</span>. 
-            Started learning to code with zero external motivation, just pure determination.
+            In my final semester studying <span className='text-[#aaa]'>Agricultural and Biosystems Engineering</span>, 
+            I taught myself how to code while balancing research and exams. What began as a side passion quickly became a professional pursuit.
           </p>
           <p>
-            The grind paid off. Graduated with a <span className='text-[#aaa]'>5.0 CGPA</span> and straight A's, 
-            while simultaneously finding my rhythm in software development. Sometimes the best discoveries happen 
-            when you're juggling multiple challenges and refuse to settle for just one path.
+            Today, I’m a <span className='text-[#aaa]'>Software Engineer at a fintech company,</span> where we build secure escrow-based payment systems for modern commerce. 
+            I craft responsive, reliable user experiences that anchor trust and usability turning ideas into scalable, real world solutions.
           </p>
         </div>
       </div>

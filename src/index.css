@@ -29,7 +29,7 @@ body {
 }
 
 .clamp-small {
-  font-size: clamp(0.7rem, 1.1vw, 0.8rem);
+  font-size: clamp(0.8rem, 1.1vw, 0.9rem);
   font-weight: normal;
   line-height: 1.15;
   color: #777;
@@ -37,7 +37,7 @@ body {
 }
 
 .clamp-span{
-  font-size: clamp(0.7em, 10vw, 5rem);
+  font-size: clamp(0.8em, 10vw, 7rem);
   font-weight: normal;
   letter-spacing: -0.03em;
   line-height: 1.15;
@@ -57,4 +57,34 @@ body {
   color: #fff;
   font-size: clamp(1.6em, 7vw, 7rem);
   font-weight: 600;
+}
+
+/* Add this to your global CSS file */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, #333 25%, #555 50%, #333 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Alternative if you prefer Tailwind's arbitrary values */
+@keyframes shimmer-fade {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-shimmer-fade {
+  animation: shimmer-fade 1.5s ease-in-out infinite;
 }

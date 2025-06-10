@@ -4,125 +4,46 @@ import DisplayHead from "../components/DisplayHead";
 import Projects from "../components/Projects";
 import Card from "../components/Card";
 import Api from "../components/Api";
+import axiosInstance from "../axios/axiosInstance"
+import { useQuery } from "@tanstack/react-query";
 
-const frontProjectList = [
-  {
-    title: "TAC — GOOGLE FONTS COMMISSIONED TYPEFACE",
-    role: "REACCT DEVELOPER",
-    specification: "REACT - JS - TAILWIND - FRAMER",
-    company: "TAC",
-    link: "https://fonts.google.com",
-    external: true
-  },
-  {
-    title: "FINTECH — KUDA BANKING SOFTWARE BANK APP",
-    role: "INTERN",
-    specification: "FRONTEND DEVELOPMENT",
-    company: "KUDA",
-    link: "https://fonts.google.com",
-    external: true
-  },
-  {
-    title: "ECOMMERCE — SHOPIFY CUSTOM THEME DEVELOPMENT",
-    role: "FREELANCER",
-    specification: "FULLSTACK DEVELOPMENT",
-    company: "SHOPIFY",
-    link: "https://fonts.google.com",
-    external: true
-  },
-  {
-    title: "MOBILE — REACT NATIVE FITNESS TRACKING APP",
-    role: "LEAD DEVELOPER",
-    specification: "MOBILE DEVELOPMENT",
-    company: "FITTRACK",
-    link: "https://fonts.google.com",
-    external: true
-  },
-  {
-    title: "WEB3 — DECENTRALIZED MARKETPLACE PLATFORM",
-    role: "BLOCKCHAIN DEVELOPER",
-    specification: "SMART CONTRACT DEVELOPMENT",
-    company: "CRYPTOMART",
-    link: "https://fonts.google.com",
-    external: true
-  },
-];
 
-const backProjectList = [
-  {
-    title: "TAC — GOOGLE FONTS COMMISSIONED TYPEFACE",
-    role: "ART DIRECTOR",
-    specification: "CREATIVE DEVELOPMENT",
-    company: "TAC",
-    external: false
-  },
-  {
-    title: "FINTECH — KUDA BANKING SOFTWARE BANK APP",
-    role: "INTERN",
-    specification: "FRONTEND DEVELOPMENT",
-    company: "KUDA",
-    external: false
-  },
-  {
-    title: "ECOMMERCE — SHOPIFY CUSTOM THEME DEVELOPMENT",
-    role: "FREELANCER",
-    specification: "FULLSTACK DEVELOPMENT",
-    company: "SHOPIFY",
-    external: false
-  },
-  {
-    title: "MOBILE — REACT NATIVE FITNESS TRACKING APP",
-    role: "LEAD DEVELOPER",
-    specification: "MOBILE DEVELOPMENT",
-    company: "FITTRACK",
-    external: false
-  },
-  {
-    title: "WEB3 — DECENTRALIZED MARKETPLACE PLATFORM",
-    role: "BLOCKCHAIN DEVELOPER",
-    specification: "SMART CONTRACT DEVELOPMENT",
-    company: "CRYPTOMART",
-    external: false
-  },
-];
-
-// Animation variants
 const pageVariants = {
   initial: {
     opacity: 0,
-    y: 20
+    y: 20,
   },
   animate: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.6,
-      ease: "easeOut"
-    }
+      ease: "easeOut",
+    },
   },
   exit: {
     opacity: 0,
     y: -20,
     transition: {
       duration: 0.4,
-      ease: "easeIn"
-    }
-  }
+      ease: "easeIn",
+    },
+  },
 };
 
 const sectionVariants = {
   hidden: {
     opacity: 0,
-    y: 30
+    y: 30,
   },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.7,
-      ease: "easeOut"
-    }
-  }
+      ease: "easeOut",
+    },
+  },
 };
 
 const staggerContainer = {
@@ -130,14 +51,42 @@ const staggerContainer = {
   visible: {
     transition: {
       staggerChildren: 0.2,
-      delayChildren: 0.1
-    }
-  }
+      delayChildren: 0.1,
+    },
+  },
 };
 
 const Home = () => {
+  const {
+    isLoading: FeIsLoading,
+    error: FeError,
+    data: FeData,
+  } = useQuery({
+    queryKey: ["frontend-data"],
+    queryFn: async () => {
+      const response = await axiosInstance.get("/frontend/get-data");
+      return response.data;
+    },
+  });
+
+  const frontendProjects = FeData?.projects || [];
+
+  const {
+    isLoading: MaIsLoading,
+    error: MaError,
+    data: MaData,
+  } = useQuery({
+    queryKey: ["mobile-data"],
+    queryFn: async () => {
+      const response = await axiosInstance.get("/mobile/get-all-mobileApps");
+      return response.data;
+    },
+  });
+
+  const MobileAppProject = MaData?.data || [];
+
   return (
-    <motion.div 
+    <motion.div
       className="bg-transparent overflow-hidden"
       variants={pageVariants}
       initial="initial"
@@ -150,25 +99,30 @@ const Home = () => {
         animate="visible"
       >
         <motion.div variants={sectionVariants}>
-          <DisplayHead 
-            TextA="FRONT" 
-            TextB="END " 
-            aboutText="Crafting pixel-perfect, responsive user interfaces with React, Vue.js, and TypeScript. I specialize in building dynamic web applications with seamless user experiences, leveraging modern tools like Tailwind CSS, Next.js, and state management libraries. From interactive dashboards to e-commerce platforms, I transform complex requirements into intuitive, accessible interfaces that users love." 
-            id="frontend" 
+          <DisplayHead
+            TextA="FRONT"
+            TextB="END "
+            aboutText="I craft responsive, high-performance user interfaces using React, Vue.js, Nuxt.js, TypeScript, and JavaScript. With tools like Tailwind CSS, Next.js, Redux, Pinia, and React Query, I build clean, accessible UIs from admin dashboards and portfolios to e-commerce and fintech apps always with a focus on UX, speed, and pixel perfect"
+            id="frontend"
           />
         </motion.div>
 
-        <motion.div 
+        <motion.div
           variants={sectionVariants}
           whileInView={{ opacity: 1, y: 0 }}
           initial={{ opacity: 0, y: 30 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <Projects projects={frontProjectList} />
+          <Projects
+            projects={frontendProjects}
+            FeIsLoading={FeIsLoading}
+            FeError={FeError}
+            type="frontend"
+          />
         </motion.div>
 
-        <motion.div 
+        <motion.div
           variants={sectionVariants}
           whileInView={{ opacity: 1, y: 0 }}
           initial={{ opacity: 0, y: 30 }}
@@ -179,7 +133,7 @@ const Home = () => {
         </motion.div>
 
         {/* Mobile Section */}
-        <motion.div 
+        <motion.div
           className="md:mt-2 mt-10"
           variants={sectionVariants}
           whileInView={{ opacity: 1, y: 0 }}
@@ -187,39 +141,44 @@ const Home = () => {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <DisplayHead 
-            TextA="MOBILE" 
-            TextB="APP " 
-            aboutText="Building native-quality mobile experiences with React Native and Expo. I create smooth, performant apps with custom animations using Reanimated, gesture handling, and platform-specific optimizations. From fitness trackers to fintech applications, I deliver cross-platform solutions that feel native on both iOS and Android while maintaining a single codebase." 
-            id="mobile" 
+          <DisplayHead
+            TextA="MOBILE"
+            TextB="APP "
+            aboutText="I develop cross-platform mobile apps with React Native and Expo, delivering smooth, native like experiences on both iOS and Android. Using Reanimated for advanced gestures and animations, I build intuitive apps from fitness trackers to fintech platforms with responsive layouts and platform specific optimizations."
+            id="mobile"
           />
         </motion.div>
 
-        <motion.div 
+        <motion.div
           whileInView={{ opacity: 1, y: 0 }}
           initial={{ opacity: 0, y: 30 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <Projects projects={backProjectList} />
+          <Projects
+            projects={MobileAppProject}
+            BeIsLoading={MaIsLoading}
+            BeError={MaError}
+            type="mobile"
+          />
         </motion.div>
 
         {/* Backend Section */}
-        <motion.div 
+        <motion.div
           whileInView={{ opacity: 1, y: 0 }}
           initial={{ opacity: 0, y: 30 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <DisplayHead 
-            TextA="BACK" 
-            TextB="END " 
-            aboutText="Architecting scalable server-side solutions with Node.js and Express. I build robust APIs documented with Swagger, implement secure authentication systems, and optimize database performance across PostgreSQL, MySQL, and MongoDB. From payment integrations to real-time applications, I ensure reliable, maintainable backend systems that power modern web and mobile applications." 
-            id="backend" 
+          <DisplayHead
+            TextA="BACK"
+            TextB="END "
+            aboutText="I design scalable, secure backend systems using Node.js and Express. I build and document RESTful APIs with Swagger, implement JWT and cookie based authentication, and integrate third-party services like payment gateways. I work with PostgreSQL, MongoDB, and MySQL, ensuring robust, maintainable, and performant backend services."
+            id="backend"
           />
         </motion.div>
 
-        <motion.div 
+        <motion.div
           whileInView={{ opacity: 1, y: 0 }}
           initial={{ opacity: 0, y: 30 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -233,5 +192,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
