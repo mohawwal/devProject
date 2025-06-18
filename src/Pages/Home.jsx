@@ -57,19 +57,19 @@ const staggerContainer = {
 };
 
 const Home = () => {
-  const {
-    isLoading: FeIsLoading,
-    error: FeError,
-    data: FeData,
-  } = useQuery({
-    queryKey: ["frontend-data"],
-    queryFn: async () => {
-      const response = await axiosInstance.get("/frontend/get-data");
-      return response.data;
-    },
-  });
+  // const {
+  //   isLoading: FeIsLoading,
+  //   error: FeError,
+  //   data: FeData,
+  // } = useQuery({
+  //   queryKey: ["frontend-data"],
+  //   queryFn: async () => {
+  //     const response = await axiosInstance.get("/frontend/get-data");
+  //     return response.data;
+  //   },
+  // });
 
-  const frontendProjects = FeData?.projects || [];
+  //const frontendProjects = FeData?.projects || [];
 
   const {
     isLoading: MaIsLoading,
@@ -98,16 +98,16 @@ const Home = () => {
         initial="hidden"
         animate="visible"
       >
-        <motion.div variants={sectionVariants}>
+        {/* <motion.div variants={sectionVariants}>
           <DisplayHead
             TextA="FRONT"
             TextB="END "
             aboutText="I craft responsive, high-performance user interfaces using React, Vue.js, Nuxt.js, TypeScript, and JavaScript. With tools like Tailwind CSS, Next.js, Redux, Pinia, and React Query, I build clean, accessible UIs from admin dashboards and portfolios to e-commerce and fintech apps always with a focus on UX, speed, and pixel perfect"
             id="frontend"
           />
-        </motion.div>
+        </motion.div> */}
 
-        <motion.div
+        {/* <motion.div
           variants={sectionVariants}
           whileInView={{ opacity: 1, y: 0 }}
           initial={{ opacity: 0, y: 30 }}
@@ -120,17 +120,7 @@ const Home = () => {
             FeError={FeError}
             type="frontend"
           />
-        </motion.div>
-
-        <motion.div
-          variants={sectionVariants}
-          whileInView={{ opacity: 1, y: 0 }}
-          initial={{ opacity: 0, y: 30 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <Card />
-        </motion.div>
+        </motion.div> */}
 
         {/* Mobile Section */}
         <motion.div
@@ -161,6 +151,16 @@ const Home = () => {
             BeError={MaError}
             type="mobile"
           />
+        </motion.div>
+
+        <motion.div
+          variants={sectionVariants}
+          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <Card />
         </motion.div>
 
         {/* Backend Section */}

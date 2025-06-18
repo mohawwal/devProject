@@ -200,8 +200,6 @@ const Api = () => {
                               day: 'numeric'
                             })}
                           </span>
-                          {/* <span className="text-[#666] ml-4">By:</span>
-                          <span className="text-[#888]">{project.creator_email}</span> */}
                         </div>
                       </div>
                     </div>
@@ -213,7 +211,7 @@ const Api = () => {
 
           <div className="w-full lg:w-1/3">
             <div className="sticky top-4 space-y-6">
-              <div className="bg-[#111] rounded-lg p-4">
+              <div className="rounded-lg p-4">
                 <h2 className="text-[#bbb] font-semibold mb-3 text-sm uppercase tracking-wide">
                   MUSIC & VIBES
                 </h2>
@@ -266,7 +264,7 @@ const Api = () => {
                 <h2 className="text-[#bbb] font-semibold mb-3 text-sm uppercase tracking-wide">
                   ARSENAL FC
                 </h2>
-                <div className="text-[13.5px] text-[#888] leading-relaxed space-y-2">
+                <div className="text-[13px] text-[#888] leading-relaxed space-y-2">
                   <p>
                     As an Arsenal fan, I've mastered the art of debugging under pressure - 
                     because supporting Arsenal is basically error handling in real life.

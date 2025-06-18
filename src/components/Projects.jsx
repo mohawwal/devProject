@@ -5,17 +5,14 @@ import ProjectSkeleton from "../features/ProjectSkeleton"
 
 const Projects = ({ 
     projects = [], 
-    type = "frontend", 
-    FeIsLoading = false, 
-    FeError = null,
     BeIsLoading = false,
     BeError = null 
   }) => {
 
   const [scrollY, setScrollY] = useState(0);
 
-  const isLoading = type === "frontend" ? FeIsLoading : BeIsLoading;
-  const error = type === "frontend" ? FeError : BeError;
+  const isLoading = BeIsLoading;
+  const error = BeError;
   
   useEffect(() => {
     const handleScroll = () => {
@@ -80,20 +77,20 @@ const Projects = ({
                     FEATURED / <br /> PROJECTS ({projects.length})
                   </span>
                   <span>
-                    {type === 'frontend' ? project.role : project.industry} / <br />
+                    {project.industry} / <br />
                     {project.stacks?.map((stack, i) => (
-                      <span key={i}>{i === 0 ? stack : ` _ ${stack}`}</span>
+                      <span key={i}>{i === 0 ? stack : ` • ${stack}`}</span>
                     ))}
                   </span>
                 </>
               ) : (
                 <>
                   <span>
-                    {type === 'frontend' ? project.role : project.industry}
+                    {project.industry}
                   </span>
                   <span>
                     {project.stacks?.map((stack, i) => (
-                      <span key={i}>{i === 0 ? stack : ` _ ${stack}`}</span>
+                      <span key={i}>{i === 0 ? stack : ` • ${stack}`}</span>
                     ))}
                   </span>
                 </>
@@ -106,22 +103,18 @@ const Projects = ({
               } w-full px-8 cursor-default`}
               style={translateStyle}
             >
-              <span className="clamp-span block py-5 group-hover:text-[#E34234] transition-all duration-300 ease-in-out group-hover:scale-105">
-                {type === "frontend" ? (
-                  <a
-                    href={project.project_link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block"
-                  >
-                    {project.project_name}
-                  </a>
-                ) : (
-                  <Link to={`/mobile/${project.id}`} className="block">
-                    {type === "frontend" ? project.title : project.project_name}
-                  </Link>
-                )}
-              </span>
+              <div className="relative py-5 w-fit">
+  <Link
+    to={`/mobile/${project.id}`}
+    className="clamp-span block transition-all duration-300 ease-in-out group-hover:text-[#E34234] group-hover:scale-105"
+  >
+    {project.project_name}
+  </Link>
+  <span className="absolute -top-2 -right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-[#E34234]">
+    ↗
+  </span>
+</div>
+
             </div>
             <div className="h-[20%]"></div>
           </div>
