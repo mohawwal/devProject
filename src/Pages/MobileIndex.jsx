@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { MoveLeft } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
@@ -6,6 +7,10 @@ import axiosInstance from "../axios/axiosInstance";
 const MobileIndex = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["mobileApp", id],
@@ -82,7 +87,7 @@ const MobileIndex = () => {
         </div>
 
         <div className="flex flex-row items-center justify-between my-3 gap-5">
-          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-bold leading-tight text-white m-0 p-0">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-white m-0 p-0">
             {project.project_name?.toUpperCase()}
           </h1>
           <p>{new Date(project.created_at).getFullYear()}</p>
@@ -99,9 +104,11 @@ const MobileIndex = () => {
         </div>
 
         <div className="flex flex-col items-start text-[13.8px]">
-          <p>DESIGN:</p>
-          <p className="underline text-[#aaa]">
-            {project.designer?.toUpperCase()}
+          <p>DESIGN GUY:</p>
+          <p className="underline text-[#aaa] cursor-pointer">
+            <a href={`project.designer`} target="_blank" rel="noopener noreferrer">
+              DESIGN GUY PAGE
+            </a>
           </p>
         </div>
 

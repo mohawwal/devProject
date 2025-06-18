@@ -1,19 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import ProjectSkeleton from "../features/ProjectSkeleton"
+import ProjectSkeleton from "../features/ProjectSkeleton";
 
-
-const Projects = ({ 
-    projects = [], 
-    BeIsLoading = false,
-    BeError = null 
-  }) => {
-
+const Projects = ({ projects = [], BeIsLoading = false, BeError = null }) => {
   const [scrollY, setScrollY] = useState(0);
 
   const isLoading = BeIsLoading;
   const error = BeError;
-  
+
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY - window.innerHeight * 0.7;
@@ -28,7 +22,7 @@ const Projects = ({
     return <ProjectSkeleton count={3} />;
   }
 
-  if(error) {
+  if (error) {
     return (
       <div className="w-full px-4 md:px-8 lg:px-16 py-12">
         <div className="text-center">
@@ -37,7 +31,7 @@ const Projects = ({
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   if (!projects || projects.length === 0) {
@@ -45,7 +39,9 @@ const Projects = ({
       <div className="w-full px-4 md:px-8 lg:px-16 py-12">
         <div className="text-center text-[#aaa]">
           <div className="text-base">No projects found</div>
-          <div className="text-sm mt-2">Projects will appear here once added</div>
+          <div className="text-sm mt-2">
+            Projects will appear here once added
+          </div>
         </div>
       </div>
     );
@@ -85,9 +81,7 @@ const Projects = ({
                 </>
               ) : (
                 <>
-                  <span>
-                    {project.industry}
-                  </span>
+                  <span>{project.industry}</span>
                   <span>
                     {project.stacks?.map((stack, i) => (
                       <span key={i}>{i === 0 ? stack : ` • ${stack}`}</span>
@@ -104,17 +98,16 @@ const Projects = ({
               style={translateStyle}
             >
               <div className="relative py-5 w-fit">
-  <Link
-    to={`/mobile/${project.id}`}
-    className="clamp-span block transition-all duration-300 ease-in-out group-hover:text-[#E34234] group-hover:scale-105"
-  >
-    {project.project_name}
-  </Link>
-  <span className="absolute -top-2 -right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-[#E34234]">
-    ↗
-  </span>
-</div>
-
+                <Link
+                  to={`/mobile/${project.id}`}
+                  className="clamp-span block transition-all duration-300 ease-in-out group-hover:text-[#E34234] group-hover:scale-105"
+                >
+                  {project.project_name}
+                </Link>
+                <span className="absolute -top-2 -right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-[#E34234]">
+                  ↗
+                </span>
+              </div>
             </div>
             <div className="h-[20%]"></div>
           </div>
