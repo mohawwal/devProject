@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ProjectSkeleton from "../features/ProjectSkeleton";
+import { ArrowUpRight } from "lucide-react";
 
 const Projects = ({ projects = [], BeIsLoading = false, BeError = null }) => {
   const [scrollY, setScrollY] = useState(0);
@@ -74,41 +75,50 @@ const Projects = ({ projects = [], BeIsLoading = false, BeError = null }) => {
                   </span>
                   <span>
                     {project.industry} / <br />
-                    {project.stacks?.map((stack, i) => (
-                      <span key={i}>{i === 0 ? stack : ` • ${stack}`}</span>
-                    ))}
+                    <span className="block md:hidden">
+                      {project.stacks?.[0]}
+                      {project.stacks?.length > 1 && " •••"}
+                    </span>
+                    <span className="hidden md:inline">
+                      {project.stacks?.map((stack, i) => (
+                        <span key={i}>{i === 0 ? stack : ` • ${stack}`}</span>
+                      ))}
+                    </span>
                   </span>
                 </>
               ) : (
                 <>
                   <span>{project.industry}</span>
                   <span>
-                    {project.stacks?.map((stack, i) => (
-                      <span key={i}>{i === 0 ? stack : ` • ${stack}`}</span>
-                    ))}
+                    <span className="block md:hidden">
+                      {project.stacks?.[0]}
+                      {project.stacks?.length > 1 && " •••"}
+                    </span>
+                    <span className="hidden md:inline">
+                      {project.stacks?.map((stack, i) => (
+                        <span key={i}>{i === 0 ? stack : ` • ${stack}`}</span>
+                      ))}
+                    </span>
                   </span>
                 </>
               )}
             </div>
 
             <div
-              className={`font-bebas ${
+              className={`font-bebas w-full px-8 cursor-default ${
                 isEven ? "text-left" : "text-right"
-              } w-full px-8 cursor-default`}
+              }`}
               style={translateStyle}
             >
-              <div className="relative py-5 w-fit">
-                <Link
-                  to={`/mobile/${project.id}`}
-                  className="clamp-span block transition-all duration-300 ease-in-out group-hover:text-[#E34234] group-hover:scale-105"
-                >
-                  {project.project_name}
-                </Link>
-                <span className="absolute -top-2 -right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-[#E34234]">
-                  ↗
-                </span>
-              </div>
+              <Link
+                to={`/mobile/${project.id}`}
+                className="relative clamp-span inline-flex items-center gap-1 group py-5 w-fit transition-all duration-300 ease-in-out hover:text-[#E34234] hover:scale-105"
+              >
+                {project.project_name}
+                <ArrowUpRight className="w-4 h-4 text-[#E34234] opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              </Link>
             </div>
+
             <div className="h-[20%]"></div>
           </div>
         );
