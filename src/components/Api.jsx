@@ -228,7 +228,7 @@ const Api = () => {
                       </p>
                       <p>
                         My playlist is a chaotic mix of Afrobeats, drill, and whatever gets the dopamine flowing. 
-                        Burna Boy's "c&d" on repeat during debugging sessions, and some UK drill when the imposter syndrome kicks in.
+                        Burna Boy's "cloak & Dagger" on repeat during debugging sessions, and some UK drill when the imposter syndrome kicks in.
                       </p>
                       <p>
                         Music isn't just background noise, it's fuel. The right track can turn a frustrating 
@@ -282,7 +282,7 @@ const Api = () => {
                         sometimes it's frustrating, but the process matters.
                       </p>
                       <p>
-                        Being a Gooner has taught me resilience in coding. When your build fails for the 
+                        Being a Gooner has taught me resilience in life & coding. When your build fails for the 
                         10th time, just remember we've been waiting for a Premier League title since 2004. 
                         Perspective, my friend.
                       </p>
