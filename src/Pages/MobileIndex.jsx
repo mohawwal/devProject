@@ -87,7 +87,7 @@ const MobileIndex = () => {
         </div>
 
         <div className="flex flex-row items-center justify-between my-3 gap-5">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-white m-0 p-0">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-white m-0 p-0 gap-10">
             {project.project_name?.toUpperCase()}
           </h1>
           <p>{new Date(project.created_at).getFullYear()}</p>
@@ -107,7 +107,7 @@ const MobileIndex = () => {
           <p>DESIGN GUY:</p>
           <p className="underline text-[#aaa] cursor-pointer">
             <a href={`project.designer`} target="_blank" rel="noopener noreferrer">
-              DESIGN GUY PAGE
+              CHECK THE DESIGN GUY PAGE
             </a>
           </p>
         </div>
@@ -147,26 +147,36 @@ const MobileIndex = () => {
 
         {/* Media Section */}
         {sortedMedia.length > 0 && (
-          <div className="flex flex-col items-start text-[13.8px] gap-8 -mx-4 px-0">
+          <div className="flex flex-col items-start text-[13.8px] gap-8 -mx-4 px-0 mt-10">
             {sortedMedia.map((media) => (
               <div key={media.id} className="w-full">
-                {media.file_type?.startsWith("video/") ? (
-                  <video
-                    src={media.file_url}
-                    controls
-                    preload="metadata"
-                    className="w-full aspect-video object-cover block"
-                    poster={media.thumbnail_url || undefined}
-                  >
-                    Your browser does not support the video tag.
-                  </video>
-                ) : (
-                  <img
-                    src={media.file_url}
-                    alt={media.description || `Media ${media.display_order}`}
-                    className="w-full mt-6 rounded-lg object-cover block"
-                  />
-                )}
+                <div className="w-full h-[80vh] md:h-[90vh] flex items-center justify-center bg-black overflow-hidden">
+                  {media.file_type?.startsWith("video/") ? (
+                    <video
+                      src={media.file_url}
+                      controls
+                      preload="metadata"
+                      className="w-full h-full object-cover object-center rounded-lg"
+                      poster={media.thumbnail_url || undefined}
+                      style={{ 
+                        objectFit: 'cover',
+                        objectPosition: 'center'
+                      }}
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                  ) : (
+                    <img
+                      src={media.file_url}
+                      alt={media.description || `Media ${media.display_order}`}
+                      className="w-full h-full object-cover object-center rounded-lg"
+                      style={{ 
+                        objectFit: 'cover',
+                        objectPosition: 'center'
+                      }}
+                    />
+                  )}
+                </div>
                 {media.description && (
                   <p className="text-[#aaa] pt-3 text-[13.8px] uppercase px-4">
                     {media.description}
