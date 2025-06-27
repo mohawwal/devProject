@@ -104,12 +104,21 @@ const MobileIndex = () => {
         </div>
 
         <div className="flex flex-col items-start text-[13.8px]">
-          <p>DESIGN GUY:</p>
-          <p className="underline text-[#aaa] cursor-pointer">
-            <a href={`project.designer`} target="_blank" rel="noopener noreferrer">
-              CHECK THE DESIGN GUY PAGE
+          <p>DESIGN:</p>
+          {project.designer_link ? (
+            <a
+              href={project.designer_link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline text-[#aaa] hover:text-[#E34234] transition-colors"
+            >
+              {project.designer
+                ? `Check ${project.designer}'s Page`
+                : "View Design Portfolio"}
             </a>
-          </p>
+          ) : (
+            <p className="text-[#aaa]">No designer link available</p>
+          )}
         </div>
 
         <div className="flex flex-col items-start text-[13.8px]">
@@ -158,9 +167,9 @@ const MobileIndex = () => {
                       preload="metadata"
                       className="w-full h-full object-cover object-center rounded-lg"
                       poster={media.thumbnail_url || undefined}
-                      style={{ 
-                        objectFit: 'cover',
-                        objectPosition: 'center'
+                      style={{
+                        objectFit: "cover",
+                        objectPosition: "center",
                       }}
                     >
                       Your browser does not support the video tag.
@@ -170,9 +179,9 @@ const MobileIndex = () => {
                       src={media.file_url}
                       alt={media.description || `Media ${media.display_order}`}
                       className="w-full h-full object-cover object-center rounded-lg"
-                      style={{ 
-                        objectFit: 'cover',
-                        objectPosition: 'center'
+                      style={{
+                        objectFit: "cover",
+                        objectPosition: "center",
                       }}
                     />
                   )}
