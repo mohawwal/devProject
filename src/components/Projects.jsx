@@ -39,7 +39,6 @@ const Projects = ({ projects = [], BeIsLoading = false, BeError = null }) => {
     return (
       <div className="w-full px-4 md:px-8 lg:px-16 py-12">
         <div className="text-center text-[#aaa]">
-          <div className="text-base">No projects found</div>
           <div className="text-sm mt-2">
             Projects will appear here once added
           </div>

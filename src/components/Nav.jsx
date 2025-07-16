@@ -42,15 +42,15 @@ const Nav = () => {
         <p className="opacity-65">
           <a
             className="hover:underline hover:underline-offset-2 hover:text-white transition-colors duration-200"
-            href=""
-          >
-            SOFTWARE RESUME
-          </a>{" "}
-          <br />
-          <a
-            href="https://awwal-portfolio.vercel.app"
+            href="https://drive.google.com/file/d/1PQEkBwFbWqffhq-cDXbcH-JgGGQJaFyT/view?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
+          >
+            SOFTWARE RESUME
+          </a>
+          <br />
+          <a
+            onClick={() => handleSectionClick("frontend")}
             className="cursor-pointer hover:underline hover:underline-offset-2 hover:text-white transition-colors duration-200"
           >
             FRONTEND
