@@ -50,7 +50,9 @@ const Nav = () => {
           </a>
           <br />
           <a
-            onClick={() => handleSectionClick("frontend")}
+            href="https://awwal-portfolio.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="cursor-pointer hover:underline hover:underline-offset-2 hover:text-white transition-colors duration-200"
           >
             FRONTEND
