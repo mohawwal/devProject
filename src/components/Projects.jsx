@@ -52,20 +52,22 @@ const Projects = ({
                 <a
                   target="_blank"
                   href={project.project_link}
-                  className="relative clamp-span inline-flex items-center gap-1 group py-5 w-fit transition-all duration-300 ease-in-out hover:text-[#E34234] hover:scale-105"
+                  className="relative clamp-span inline-flex items-center gap-1 group py-5 w-fit text-fill-animation"
+                  data-text={project.project_name}
                 >
                   {project.project_name}
-                  <ArrowUpRight className="w-4 h-4 text-[#E34234] opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                  <ArrowUpRight className="w-4 h-4 text-[#E34234] opacity-0 group-hover:opacity-100 transition-opacity duration-200 relative z-10" />
                 </a>
               </>
             ) : (
               <>
                 <Link
                   to={`/mobile/${project.id}`}
-                  className="relative clamp-span inline-flex items-center gap-1 group py-5 w-fit transition-all duration-300 ease-in-out hover:text-[#E34234] hover:scale-105"
+                  className="relative clamp-span inline-flex items-center gap-1 group py-5 w-fit text-fill-animation"
+                  data-text={project.project_name}
                 >
                   {project.project_name}
-                  <ArrowUpRight className="w-4 h-4 text-[#E34234] opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                  <ArrowUpRight className="w-4 h-4 text-[#E34234] opacity-0 group-hover:opacity-100 transition-opacity duration-200 relative z-10" />
                 </Link>
               </>
             )}

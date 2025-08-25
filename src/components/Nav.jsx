@@ -1,35 +1,44 @@
-// import { useCallback } from "react";
-// import { useNavigate, useLocation } from "react-router-dom";
+import { useCallback } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+gsap.registerPlugin(ScrollToPlugin);
 
 const Nav = () => {
-  // const navigate = useNavigate();
-  // const location = useLocation();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  // const scrollToSection = useCallback((id) => {
-  //   const el = document.getElementById(id);
-  //   if (el) {
-  //     el.scrollIntoView({ behavior: "smooth", block: "start" });
-  //   }
-  // }, []);
+  const scrollToSection = useCallback((id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      gsap.to(window, {
+        duration: 0.5,
+        scrollTo: {
+          y: el,
+          offsetY: 50,
+        },
+        ease: "sine.inOut",
+      });
+    }
+  }, []);
 
-  // const handleSectionClick = useCallback(
-  //   (sectionId) => {
-  //     const isHomePage = location.pathname === "/";
+  const handleSectionClick = useCallback(
+    (sectionId) => {
+      const isHomePage = location.pathname === "/";
 
-  //     if (!isHomePage) {
-  //       navigate("/", { replace: false });
+      if (!isHomePage) {
+        navigate("/", { replace: false });
 
-  //       requestAnimationFrame(() => {
-  //         setTimeout(() => {
-  //           scrollToSection(sectionId);
-  //         }, 50);
-  //       });
-  //     } else {
-  //       scrollToSection(sectionId);
-  //     }
-  //   },
-  //   [location.pathname, navigate, scrollToSection]
-  // );
+        setTimeout(() => {
+          scrollToSection(sectionId);
+        }, 500); 
+      } else {
+        scrollToSection(sectionId);
+      }
+    },
+    [location.pathname, navigate, scrollToSection]
+  );
 
   const stack = [
     { name: "FRONTEND", id: "frontend" },
@@ -48,7 +57,7 @@ const Nav = () => {
         <div className="opacity-65">
           <a
             className="hover:underline hover:underline-offset-2 hover:text-white transition-colors duration-200"
-            href="https://drive.google.com/file/d/1K7XvwjN0n83JtOhh-KsvYIcUa0kG03cS/view?usp=sharing"
+            href="https://drive.google.com/file/d/1K7XvwjN0n83JtOhh-KsvYIcUa0kG03cS/view?usp=sharing "
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -58,7 +67,10 @@ const Nav = () => {
           <div className="flex flex-row gap-2">
             {stack.map((item, index) => (
               <div key={index}>
-                <div className="hover:underline hover:underline-offset-2 hover:text-white transition-colors duration-200 cursor-pointer">
+                <div
+                  className="hover:underline hover:underline-offset-2 hover:text-white transition-colors duration-200 cursor-pointer"
+                  onClick={() => handleSectionClick(item.id)}
+                >
                   {item.name}
                   {index < stack.length - 1 && " / "}
                 </div>

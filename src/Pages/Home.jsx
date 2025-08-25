@@ -34,12 +34,12 @@ const Home = () => {
 
   return (
     <div>
-      <div className="pt-[12vh]">
+      <div id="frontend" className="pt-[12vh]">
         <DisplayHead
           TextA="FRONT"
           TextB="END "
           aboutText="I craft responsive, high-performance user interfaces using React, Vue.js, Nuxt.js, TypeScript, and JavaScript. With tools like Tailwind CSS, Next.js, Redux, Pinia, and React Query, I build clean, accessible UIs from admin dashboards and portfolios to e-commerce and fintech apps always with a focus on UX, speed, and pixel perfect"
-          id="frontend"
+          
         />
       </div>
       <div>
@@ -53,12 +53,12 @@ const Home = () => {
       <div>
         <Card />
       </div>
-      <div className="pb-[20px]">
+      <div id="mobile" className="pb-[20px]">
         <DisplayHead
            TextA="MOBILE"
            TextB="APP "
            aboutText="I develop cross-platform mobile apps with React Native and Expo, delivering smooth, native like experiences on both iOS and Android. Using Reanimated for advanced gestures and animations, I build intuitive apps from fitness trackers to fintech platforms with responsive layouts and platform specific optimizations."
-           id="mobile"
+           
          />
       </div>
       <div>
@@ -74,7 +74,7 @@ const Home = () => {
           TextA="BACK"
           TextB="END "
           aboutText="I design scalable, secure backend systems using Node.js and Express. I build and document RESTful APIs with Swagger, implement JWT and cookie based authentication, and integrate third-party services like payment gateways. I work with PostgreSQL, MongoDB, and MySQL, ensuring robust, maintainable, and performant backend services."
-          id="backend"
+          id="backend" 
         />
       </div>
       <div>
