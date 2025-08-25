@@ -2,63 +2,7 @@ import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axiosInstance from "../axios/axiosInstance"
-
-const ApiSkeleton = () => {
-  return (
-    <div className="min-h-screen my-10 text-[#aaa]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="py-4">
-          <div className="h-4 bg-[#333] rounded animate-shimmer w-48"></div>
-        </div>
-        
-        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
-          {/* Left side - Projects skeleton */}
-          <div className="w-full lg:w-2/3">
-            <div className="border-t-[0.5px] border-[#aaa]">
-              {Array.from({ length: 4 }).map((_, index) => (
-                <div key={index} className="border-b-[0.5px] border-[#aaa] py-3">
-                  <div className="flex items-center justify-between">
-                    <div className="flex-1 space-y-2">
-                      <div className="h-4 bg-[#333] rounded animate-shimmer w-2/3"></div>
-                      <div className="h-3 bg-[#333] rounded animate-shimmer w-1/2"></div>
-                    </div>
-                    <div className="h-5 w-5 bg-[#333] rounded animate-shimmer ml-2"></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Right side - Sidebar skeleton */}
-          <div className="w-full lg:w-1/3">
-            <div className="sticky top-4 space-y-6">
-              {/* Music section skeleton */}
-              <div className="bg-[#111] rounded-lg p-4">
-                <div className="h-4 bg-[#333] rounded animate-shimmer w-32 mb-3"></div>
-                <div className="space-y-2">
-                  <div className="h-3 bg-[#333] rounded animate-shimmer w-full"></div>
-                  <div className="h-3 bg-[#333] rounded animate-shimmer w-4/5"></div>
-                  <div className="h-3 bg-[#333] rounded animate-shimmer w-3/4"></div>
-                </div>
-                <div className="h-3 bg-[#333] rounded animate-shimmer w-20 mt-3"></div>
-              </div>
-
-              {/* Arsenal section skeleton */}
-              <div className="p-4">
-                <div className="h-4 bg-[#333] rounded animate-shimmer w-24 mb-3"></div>
-                <div className="space-y-2">
-                  <div className="h-3 bg-[#333] rounded animate-shimmer w-full"></div>
-                  <div className="h-3 bg-[#333] rounded animate-shimmer w-5/6"></div>
-                </div>
-                <div className="h-3 bg-[#333] rounded animate-shimmer w-20 mt-3"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+import { ApiSkeleton } from "../features/ProjectSkeleton";
 
 const Api = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -71,7 +15,6 @@ const Api = () => {
 
   const {
     isLoading: BeIsLoading,
-    error: BeError,
     data: BeData,
   } = useQuery({
     queryKey: ["backend-data"],
@@ -87,19 +30,8 @@ const Api = () => {
     return <ApiSkeleton />;
   }
 
-  if (BeError) {
-    return (
-      <div className="min-h-screen my-10 text-[#aaa] flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-sm text-red-400">Error loading backend projects</p>
-          <p className="text-xs text-[#666] mt-2">{BeError.message}</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="min-h-screen my-10 text-[#aaa]">
+    <div className="min-h-screen text-[#aaa]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-4">
           <p className="text-xs">
@@ -238,7 +170,7 @@ const Api = () => {
                   )}
                   <button
                     onClick={() => setShowMusicDetails(!showMusicDetails)}
-                    className="text-[#4a9eff] hover:text-[#6bb6ff] text-xs underline transition-colors mt-2"
+                    className="hover:text-[#4a9eff] text-xs underline transition-colors mt-2"
                   >
                     {showMusicDetails ? 'Show Less' : 'View More'}
                   </button>
@@ -293,7 +225,7 @@ const Api = () => {
                   )}
                   <button
                     onClick={() => setShowArsenalDetails(!showArsenalDetails)}
-                    className="text-[#4a9eff] hover:text-[#6bb6ff] text-xs underline transition-colors mt-2"
+                    className="hover:text-[#4a9eff] text-xs underline transition-colors mt-2"
                   >
                     {showArsenalDetails ? 'Show Less' : 'View More'}
                   </button>

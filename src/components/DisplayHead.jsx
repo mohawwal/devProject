@@ -1,96 +1,105 @@
-import { ArrowDown } from "lucide-react"
-import { useState, useEffect } from "react"
-import { motion, useMotionValue, useSpring } from "framer-motion"
+import { ArrowDown } from "lucide-react";
+import { useRef, useEffect, useState } from "react";
+import HoverableText from "../features/HoverableText";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const HoverableText = ({ text, className = "" }) => {
-  const getRandomHighlightedLetters = (text) => {
-    const letters = text.split('').map((char, index) => ({ char, index }))
-    const nonSpaceLetters = letters.filter(item => item.char !== ' ')
-    
-    const numToHighlight = text.length <= 8 ? 1 : 2
-    const actualHighlight = Math.min(numToHighlight, nonSpaceLetters.length)
-    
-    const shuffled = [...nonSpaceLetters].sort(() => 0.5 - Math.random())
-    const highlightedIndices = new Set(shuffled.slice(0, actualHighlight).map(item => item.index))
-    
-    return highlightedIndices
-  }
-
-  const highlightedIndices = getRandomHighlightedLetters(text)
-
-  return (
-    <span className={className}>
-      {text.split('').map((char, index) => (
-        <span
-          key={index}
-          className={`inline-block ${highlightedIndices.has(index) ? 'text-[#aaa]' : ''}`}
-        >
-          {char === ' ' ? '\u00A0' : char}
-        </span>
-      ))}
-    </span>
-  )
-}
+gsap.registerPlugin(ScrollTrigger);
 
 const DisplayHead = ({ TextA, TextB, aboutText, id }) => {
-  const [scrollY, setScrollY] = useState(0)
-
-  const widthMotionValue = useMotionValue(150)
-  const smoothWidth = useSpring(widthMotionValue, {
-    stiffness: 120,
-    damping: 20,
-    mass: 1,
-  })
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [scrollY]);
 
-  useEffect(() => {
-    const baseWidth = 150
-    const maxWidth = 500
-    const cycleHeight = window.innerHeight
-    
-    const cyclicScrollY = scrollY % cycleHeight
-    
-    const scrollProgress = cyclicScrollY / cycleHeight
-    const additionalWidth = scrollProgress * (maxWidth - baseWidth)
-    const newWidth = baseWidth + additionalWidth
-    
-    widthMotionValue.set(newWidth)
-  }, [scrollY, widthMotionValue])
+  const containerRef = useRef();
+  const desktopLineRef = useRef();
+  const mobileLineRef = useRef();
+
+  useGSAP(() => {
+    const container = containerRef.current;
+    const desktopLine = desktopLineRef.current;
+    const mobileLine = mobileLineRef.current;
+
+    if (!container) return;
+
+    if (desktopLine) {
+      gsap.fromTo(
+        desktopLine,
+        {
+          width: "100px",
+        },
+        {
+          width: "400px",
+          ease: "none",
+          scrollTrigger: {
+            trigger: container,
+            start: "top 80%",
+            end: "bottom 20%",
+            scrub: true,
+            invalidateOnRefresh: true,
+            id: `desktop-line-${id}`,
+          },
+        }
+      );
+    }
+
+    if (mobileLine) {
+      gsap.fromTo(
+        mobileLine,
+        {
+          width: "200px",
+        },
+        {
+          width: "320px",
+          ease: "none",
+          scrollTrigger: {
+            trigger: container,
+            start: "top 80%",
+            end: "bottom 20%",
+            scrub: true,
+            invalidateOnRefresh: true,
+            id: `mobile-line-${id}`,
+          },
+        }
+      );
+    }
+  }, [id]);
 
   return (
     <div
       id={id}
-      className="w-full md:h-[90vh] h-auto pt-[12vh] pb-12 overflow-hidden"
+      ref={containerRef}
+      className="w-full md:h-[90vh] h-auto overflow-hidden"
     >
       <div className="">
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-4 pt-3">
           <h1 className="clamp-text">
             <HoverableText text={TextA} />
           </h1>
-          <motion.div
-            className="h-[28px] bg-[#777] rounded"
-            style={{ width: smoothWidth }}
+          <div
+            ref={desktopLineRef}
+            className="h-[28px] bg-[#777] rounded w-[100px]"
           />
           <h1 className="clamp-text">
             <HoverableText text={TextB} />
           </h1>
         </div>
 
-        <div className="md:hidden">
+        <div className="md:hidden pt-3">
           <h1 className="clamp-text">
             <HoverableText text={TextA} />
           </h1>
           <h1 className="clamp-text mt-5 flex items-center gap-4">
-            <motion.div
-              className="h-[20px] bg-[#777] rounded"
-              style={{ width: smoothWidth }}
+            <div
+              ref={mobileLineRef}
+              className="h-[20px] bg-[#777] rounded w-[200px]"
             />
             <HoverableText text={TextB} />
           </h1>
@@ -101,29 +110,18 @@ const DisplayHead = ({ TextA, TextB, aboutText, id }) => {
             <HoverableText text="DEVELOPER" />
           </h1>
           <div className="h-[200px] flex flex-col md:w-full w-[320px] justify-between">
-            <p className="clamp-small">
-              {aboutText}
-            </p>
+            <p className="clamp-small">{aboutText}</p>
             <div className="clamp-small md:flex flex-row items-center justify-between text-xs text-[#777] hidden">
               <p>Scroll Down</p>
-              <motion.div
-                animate={{
-                  y: [5, -15, 3],
-                  transition: {
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  },
-                }}
-              >
+              <div>
                 <ArrowDown size={16} />
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default DisplayHead
+export default DisplayHead;
