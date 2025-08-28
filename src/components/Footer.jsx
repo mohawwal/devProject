@@ -67,7 +67,7 @@ const Footer = () => {
             <a href="https://www.linkedin.com/in/anileleye-awwal-878556145/" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
           </li>
           <li className="list-none border-[#aaa] rounded-full border py-1 px-2 hover:border-[#777] hover:text-[#aaa] cursor-pointer transition-colors duration-200">
-            <a href="https://github.com/_mohawwal" target="_blank" rel="noopener noreferrer">GITHUB</a>
+            <a href="https://github.com/mohawwal" target="_blank" rel="noopener noreferrer">GITHUB</a>
           </li>
         </div>
         <div className="mt-4 md:mt-0">

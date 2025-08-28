@@ -8,6 +8,7 @@ gsap.registerPlugin(ScrollToPlugin);
 const Nav = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   const scrollToSection = useCallback((id) => {
     const el = document.getElementById(id);
@@ -25,8 +26,7 @@ const Nav = () => {
 
   const handleSectionClick = useCallback(
     (sectionId) => {
-      const isHomePage = location.pathname === "/";
-
+      isHomePage
       if (!isHomePage) {
         navigate("/", { replace: false });
 
@@ -37,8 +37,21 @@ const Nav = () => {
         scrollToSection(sectionId);
       }
     },
-    [location.pathname, navigate, scrollToSection]
+    [isHomePage, navigate, scrollToSection]
   );
+
+    const handleContact = useCallback(() => {
+    isHomePage
+    if (!isHomePage) {
+      navigate("/", { replace: false });
+
+      setTimeout(() => {
+        scrollToSection("contact")
+      }, 500)
+    } else {
+      scrollToSection("contact")
+    }
+  }, [isHomePage, navigate, scrollToSection])
 
   const stack = [
     { name: "FRONTEND", id: "frontend" },
@@ -78,7 +91,7 @@ const Nav = () => {
             ))}
           </div>
         </div>
-        <button className="cursor-pointer border py-1 px-3 text-sm border-[#aaa] rounded-full flex items-center justify-center md:ml-auto">
+        <button onClick={handleContact} className="cursor-pointer border py-1 px-3 text-sm border-[#aaa] rounded-full flex items-center justify-center md:ml-auto">
           <p>CONTACT</p>
         </button>
       </div>
