@@ -54,10 +54,10 @@ const DisplayHead = ({ TextA, TextB, aboutText, id }) => {
       gsap.fromTo(
         mobileLine,
         {
-          width: "200px",
+          width: "60px",
         },
         {
-          width: "320px",
+          width: "200px",
           ease: "none",
           scrollTrigger: {
             trigger: container,
