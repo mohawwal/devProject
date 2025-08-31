@@ -42,7 +42,7 @@ const Footer = () => {
 
       <MovingTextBanner text={"SAY SOMETHING - LETS TALK - LET'S COLLABORATE - WANT A SOFTWARE DEVELOPER FOR YOUR FRONTEND? - BACKEND? - MOBILE APP PROJECT? - SAY HELLO -"}/>
 
-      <div className="text-center my-6">
+      <div className="text-center">
         <div 
           className="inline-flex items-center gap-2 text-base text-[#777] hover:text-[#aaa] cursor-pointer transition-colors duration-200"
           onClick={handleCopy}
