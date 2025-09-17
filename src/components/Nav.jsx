@@ -70,7 +70,7 @@ const Nav = () => {
         <div className="opacity-65">
           <a
             className="hover:underline hover:underline-offset-2 hover:text-white transition-colors duration-200"
-            href="https://drive.google.com/file/d/1K7XvwjN0n83JtOhh-KsvYIcUa0kG03cS/view?usp=sharing "
+            href="https://drive.google.com/file/d/1dy89AzNHdvaohY0JGultBrFEdooNRIVc/view"
             target="_blank"
             rel="noopener noreferrer"
           >
