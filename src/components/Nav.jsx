@@ -56,7 +56,7 @@ const Nav = () => {
   const stack = [
     { name: "FRONTEND", id: "frontend" },
     { name: "BACKEND", id: "backend" },
-    { name: "MOBILE-APP", id: "mobile" },
+    // { name: "MOBILE-APP", id: "mobile" },
   ];
 
   return (

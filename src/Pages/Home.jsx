@@ -38,7 +38,7 @@ const Home = () => {
         <DisplayHead
           TextA="FRONT"
           TextB="END "
-          aboutText="I craft responsive, high-performance user interfaces using React, Vue.js, Nuxt.js, TypeScript, and JavaScript. With tools like Tailwind CSS, Next.js, Redux, Pinia, and React Query, I build clean, accessible UIs from admin dashboards and portfolios to e-commerce and fintech apps always with a focus on UX, speed, and pixel perfect"
+          aboutText="I have hands-on experience building responsive, high-performance user interfaces for real-world products. I work primarily with React, Vue.js, Nuxt.js, Next.js, TypeScript, and JavaScript, and use modern tools like Tailwind CSS, Redux, Pinia, and React Query to deliver clean, scalable, and accessible interfaces. I’ve built and shipped admin dashboards, portfolios, e-commerce platforms, and fintech applications, with a strong focus on user experience, performance, and pixel-perfect execution."
           
         />
       </div>
@@ -53,7 +53,7 @@ const Home = () => {
       <div>
         <Card />
       </div>
-      <div id="mobile" className="pb-[20px]">
+      {/* <div id="mobile" className="pb-[20px]">
         <DisplayHead
            TextA="MOBILE"
            TextB="APP "
@@ -68,7 +68,7 @@ const Home = () => {
           BeError={MaError}
           type="mobile"
         />
-      </div>
+      </div> */}
       <div className="pt-[20vh]">
         <DisplayHead
           TextA="BACK"
