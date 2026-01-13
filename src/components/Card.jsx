@@ -5,52 +5,24 @@ const Card = () => {
 
   const storyParagraphs = [
     <>
-      Final-year graduate of{" "}
-      <span className="text-[#aaa]">
-        Engineering
-      </span>
-      , with a strong academic background and growing interest in technology and
-      problem-solving beyond the classroom.
+      Experienced software engineer with a strong focus on{" "}
+      <span className="text-[#aaa]">backend systems and fintech solutions</span>. 
+      Skilled in designing scalable, high-performance applications using modern technologies.
     </>,
     <>
-      Transitioned into software development through{" "}
-      <span className="text-[#aaa]">self-directed learning</span>, starting with
-      HTML, CSS, and JavaScript, and later specializing in React and modern
-      frontend development.
+      Transitioned into software development through <span className="text-[#aaa]">self-directed learning</span>, mastering Go, Node.js, React, and cloud-native architectures to build reliable, production-ready applications.
     </>,
     <>
-      Completed a{" "}
-      <span className="text-[#aaa]">100 Days of Code</span> challenge, building
-      real-world projects and delivering a production-ready NFT website during
-      my final semester.
+      Delivered multiple <span className="text-[#aaa]">fintech projects</span>, from digital payments to wallet integrations, handling complex business logic, API design, and real-time transaction processing.
     </>,
     <>
-      Graduated with a{" "}
-      <span className="text-[#aaa]">
-        5.0 CGPA and distinction in my final project
-      </span>
-      , while securing my first professional software development role.
+      Built robust <span className="text-[#aaa]">full-stack solutions</span> including web dashboards, admin tools, and analytics platforms, integrating AI-driven insights and modern security best practices.
     </>,
     <>
-      Worked as a{" "}
-      <span className="text-[#aaa]">Full-Stack Engineer</span> on fintech and
-      e-commerce products, building scalable interfaces and APIs using
-      <span className="text-[#aaa]">
-        {" "}
-        React, Vue, React Native, Node.js, Tailwind, and AI-powered integrations
-      </span>
-      .
+      Designed and implemented <span className="text-[#aaa]">this portfolio</span> as a full-stack system, with an admin dashboard to manage projects, track traffic, and analyze visitor behavior by geography.
     </>,
     <>
-      Designed and built{" "}
-      <span className="text-[#aaa]">this portfolio</span> as a full-stack
-      application, including an admin dashboard for project management and
-      visitor analytics by country.
-    </>,
-    <>
-      <span className="text-[#aaa]">Currently open to new opportunities</span>,
-      focused on shipping high-quality products, learning continuously, and
-      solving real-world problems with code.
+      <span className="text-[#aaa]">Open to new challenges</span>, focused on shipping high-quality systems, exploring cutting-edge technologies, and solving complex problems in fintech and beyond.
     </>,
   ];
 
@@ -61,7 +33,7 @@ const Card = () => {
   return (
     <div className="mt-[5%] pb-[20%] relative overflow-hidden">
       <div className="border-[#aaa] border-b-[1px] flex gap-4 flex-col justify-center items-center px-4 relative z-10">
-        <p className="text-[13px] text-[#aaa] uppercase tracking-wide font-bold">
+        <p className="text-xs text-[#aaa] uppercase tracking-wide font-bold">
           PROFESSIONAL SUMMARY
         </p>
 
